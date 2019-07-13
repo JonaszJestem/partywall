@@ -6,7 +6,7 @@ export class PartyController {
   constructor(private readonly partyService: PartyService) {
   }
 
-  @Get()
+  @Get('/party')
   getParty(): string {
     return '';
   }
