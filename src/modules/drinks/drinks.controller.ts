@@ -9,7 +9,7 @@ export class DrinksController {
   }
 
   @Get('/drinks')
-  getDrinks(): [Drink & User] {
+  getDrinks(): Promise<[(User & [Drink])]> {
     return this.drinksService.getDrinks();
   }
 }
