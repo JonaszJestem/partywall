@@ -12,4 +12,8 @@ export class DrinksService {
   async getDrinks(): Promise<[User & [Drink]]> {
     return this.userModel.find({}, 'username drinks');
   }
+
+  async addDrink(user: User, drink: Drink) {
+    return this.userModel.updateOne(user, { $push: { drinks: drink } });
+  }
 }
