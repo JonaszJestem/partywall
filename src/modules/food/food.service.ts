@@ -12,4 +12,12 @@ export class FoodService {
   async getFood(): Promise<[User & [Food]]> {
     return this.userModel.find({}, 'username food');
   }
+
+  async addFood(user: User, food: Food) {
+    return this.userModel.updateOne(user, { $push: { food: food } });
+  }
+
+  async removeFood(user: User, foodId: string) {
+    return this.userModel.updateOne(user, { $pull: { _id: foodId } });
+  }
 }

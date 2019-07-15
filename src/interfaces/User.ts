@@ -9,11 +9,13 @@ export const UserSchema = new mongoose.Schema({
   drinks: [DrinkSchema],
 });
 
-export interface Username {
-  username: string;
-}
-
 export interface User {
+  _id: string;
   username: string;
   password: string;
+}
+
+export interface AuthPayload {
+  _id: string;
+  username: string;
 }
