@@ -13,11 +13,11 @@ export class FoodService {
     return this.userModel.find({}, 'username food');
   }
 
-  async addFood(user: User, food: Food) {
-    return this.userModel.updateOne(user, { $push: { food: food } });
+  async addFood({ _id }, food: Food) {
+    return this.userModel.updateOne({ _id }, { $push: { food } });
   }
 
-  async removeFood(user: User, foodId: string) {
-    return this.userModel.updateOne(user, { $pull: { _id: foodId } });
+  async removeFood({ _id }, foodId: string) {
+    return this.userModel.updateOne({ _id }, { $pull: { food: { _id: foodId } } });
   }
 }

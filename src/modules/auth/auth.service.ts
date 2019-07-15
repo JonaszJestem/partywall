@@ -11,10 +11,6 @@ export class AuthService {
   ) {
   }
 
-  private async validate(user: AuthPayload): Promise<any> {
-    return await this.userService.findOne(user.username);
-  }
-
   public async login(user: User): Promise<any> {
     const validatedUser = await this.validate(user);
 
@@ -34,5 +30,9 @@ export class AuthService {
 
   public async register(user: User): Promise<User> {
     return this.userService.create(user);
+  }
+
+  private async validate(user: AuthPayload): Promise<any> {
+    return await this.userService.findOne(user.username);
   }
 }

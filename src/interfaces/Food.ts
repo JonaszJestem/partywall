@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { IsNotEmpty } from 'class-validator';
 
 export const FoodSchema = new mongoose.Schema({
   name: String,
@@ -8,10 +9,15 @@ export const FoodSchema = new mongoose.Schema({
   quantity: Number,
 });
 
-export interface Food {
+export class Food {
+  @IsNotEmpty()
   name: string;
+  @IsNotEmpty()
   description: string;
+  @IsNotEmpty()
   weight: number;
+  @IsNotEmpty()
   price: number;
+  @IsNotEmpty()
   quantity: number;
 }

@@ -9,6 +9,7 @@ import { AuthModule } from '../auth/auth.module';
   imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]), AuthModule],
   controllers: [FoodController],
   providers: [FoodService],
+  exports: [FoodService],
 })
 export class FoodModule {
 }

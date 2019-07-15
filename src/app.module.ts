@@ -4,7 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { LoginModule } from './modules/login/login.module';
 
 @Module({
-  imports: [PartyModule, LoginModule, MongooseModule.forRoot('mongodb://77.55.211.243/partywall')],
+  imports: [PartyModule, LoginModule, MongooseModule.forRoot('mongodb://mongo/partywall')],
   controllers: [],
   providers: [],
 })

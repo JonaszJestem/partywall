@@ -21,7 +21,7 @@ export class FoodController {
   }
 
   @Delete(':id')
-  removeFood(@Request() request, @Param(':id') foodId: string) {
+  removeFood(@Request() request, @Param('id') foodId: string) {
     return this.foodService.removeFood(request.user, foodId);
   }
 }

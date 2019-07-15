@@ -1,5 +1,4 @@
 import { Test } from '@nestjs/testing';
-import { DrinksController } from './drinks.controller';
 import { DrinksService } from './drinks.service';
 import { Drink } from '../../interfaces/Drink';
 import { User, Username } from '../../interfaces/User';
@@ -7,7 +6,6 @@ import { getModelToken } from '@nestjs/mongoose';
 import { DrinksModule } from './drinks.module';
 
 describe('Drinks controller', () => {
-  let drinksController: DrinksController;
   let drinksService: DrinksService;
 
   const expectedDrinks = [
@@ -21,18 +19,12 @@ describe('Drinks controller', () => {
 
   beforeEach(async () => {
     const drinks = await createTestModule();
-    drinksController = drinks.get<DrinksController>(DrinksController);
     drinksService = drinks.get<DrinksService>(DrinksService);
   });
 
   describe('getDrinks', () => {
     it('returns the drinks', async () => {
-
-      jest.spyOn(drinksService, 'getDrinks').mockImplementation(() => {
-        return Promise.resolve(expectedDrinks);
-      });
-
-      await expect(drinksController.getDrinks()).resolves.toBe(expectedDrinks);
+      await expect(drinksService.getDrinks()).resolves.toBe(expectedDrinks);
     });
   });
 
@@ -45,6 +37,6 @@ describe('Drinks controller', () => {
   }
 
   const mockModel = {
-    find: () => [],
+    find: () => expectedDrinks,
   };
 });
