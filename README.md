@@ -1,4 +1,9 @@
 #PartyWall
+
+## Running app
+`docker-compose up` in the root folder of application
+
+## Basic information
 All party endpoints secured with JWT authentication. Anonymous user can only register and login using
 `/users/register` and
 `/users/login` endpoints.
