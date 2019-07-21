@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { User } from '../../interfaces/User';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Food } from '../../interfaces/Food';
+import { Food, User } from '../../interfaces';
 
 @Injectable()
 export class FoodService {

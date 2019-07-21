@@ -1,8 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { DrinksController } from './drinks.controller';
 import { DrinksService } from './drinks.service';
-import { Drink } from '../../interfaces/Drink';
-import { User, Username } from '../../interfaces/User';
+import { Drink, Username } from '../../interfaces';
 import { getModelToken } from '@nestjs/mongoose';
 import { DrinksModule } from './drinks.module';
 

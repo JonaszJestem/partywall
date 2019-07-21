@@ -1,23 +1,13 @@
-import * as mongoose from 'mongoose';
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, Min } from 'class-validator';
+import { Item } from './Item';
 
-export const FoodSchema = new mongoose.Schema({
-  name: String,
-  description: String,
-  weight: Number,
-  price: Number,
-  quantity: Number,
-});
-
-export class Food {
+export class Food extends Item {
   @IsNotEmpty()
   name: string;
+
   @IsNotEmpty()
   description: string;
-  @IsNotEmpty()
+
+  @Min(0)
   weight: number;
-  @IsNotEmpty()
-  price: number;
-  @IsNotEmpty()
-  quantity: number;
 }

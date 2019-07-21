@@ -1,6 +1,6 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
-import { DrinksService } from '../drinks/drinks.service';
-import { FoodService } from '../food/food.service';
+import { DrinksService } from '../drinks';
+import { FoodService } from '../food';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller()

@@ -8,8 +8,8 @@ All party endpoints secured with JWT authentication. Anonymous user can only reg
 `/users/register` and
 `/users/login` endpoints.
 
-When user logs in, he receives access_token which should be attached to every request as header:
-`Authorization: Bearer <access_token>`
+When user logs in, he receives accessToken which should be attached to every request as header:
+`Authorization: Bearer <accessToken>`
 
 ##Endpoints 
 - GET `/party`
@@ -39,7 +39,7 @@ Where post body should look like: {
 
 ### Not implemented - lack of time
 - JWT secret is plaintext hardcoded
-- DTO Validation is simplified to IsNotEmpty on all fields
+- ~~DTO Validation is simplified to IsNotEmpty on all fields~~
 - No e2e tests, only few unit tests just to prove I can write them
 - No database configuration accessed without password
 - No configuration module at all

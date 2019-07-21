@@ -2,18 +2,26 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import { ConfigService } from './modules/config/config.service';
+
+function isDevEnv() {
+  return process.env.NODE_ENV === 'dev';
+}
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: console,
   });
+  const configService: ConfigService = app.get(ConfigService);
 
-  if (process.env.NODE_ENV === 'dev') {
+  if (isDevEnv()) {
     setUpSwagger(app);
   }
 
-  app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3000);
+  app.useGlobalPipes(new ValidationPipe({
+    disableErrorMessages: !isDevEnv(),
+  }));
+  await app.listen(configService.port());
 }
 
 function setUpSwagger(app) {

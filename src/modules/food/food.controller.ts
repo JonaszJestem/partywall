@@ -1,11 +1,10 @@
 import { Body, Controller, Delete, Get, Param, Post, Request, UseGuards } from '@nestjs/common';
 import { FoodService } from './food.service';
-import { User } from '../../interfaces/User';
 import { AuthGuard } from '@nestjs/passport';
-import { Food } from '../../interfaces/Food';
+import { Food, User } from '../../interfaces';
 
 @Controller('food')
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AuthGuard())
 export class FoodController {
   constructor(private readonly foodService: FoodService) {
   }

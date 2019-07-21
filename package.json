@@ -8,8 +8,8 @@
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
-    "start:dev": "concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.build.json\" ",
-    "start:debug": "nodemon --config nodemon-debug.json",
+    "start:dev": "NODE_ENV=dev concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.build.json\" ",
+    "start:debug": "NODE_ENV=dev nodemon --config nodemon-debug.json",
     "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",
@@ -20,6 +20,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "bcrypt": "^3.0.6",
+    "mockingoose": "^2.13.1",
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0",
     "@nestjs/platform-express": "^6.0.0",
@@ -36,7 +38,9 @@
     "@nestjs/swagger": "^3.0.2",
     "swagger-ui-express": "^4.0.7",
     "class-validator": "latest",
-    "class-transformer": "^0.2.3"
+    "class-transformer": "^0.2.3",
+    "dotenv": "latest",
+    "joi": "latest"
   },
   "devDependencies": {
     "@nestjs/testing": "^6.0.0",

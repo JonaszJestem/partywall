@@ -1,11 +1,10 @@
 import { Body, Controller, Delete, Get, Param, Post, Request, UseGuards } from '@nestjs/common';
 import { DrinksService } from './drinks.service';
-import { Drink } from '../../interfaces/Drink';
+import { Drink, Username } from '../../interfaces';
 import { AuthGuard } from '@nestjs/passport';
-import { Username } from '../../interfaces/User';
 
 @Controller('drinks')
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AuthGuard())
 export class DrinksController {
   constructor(private readonly drinksService: DrinksService) {
   }
